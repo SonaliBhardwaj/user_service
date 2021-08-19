@@ -1,0 +1,85 @@
+server:
+  port: 8443
+#This below properties will enabled the HTTPS communication
+  ssl:
+    enabled: true
+    key-store: springboot.p12
+    key-store-password: password
+    key-store-type: pkcs12
+    key-alias: springboot
+    key-password: password
+
+
+app:
+  server:
+    name: general
+    detail: this is general server
+
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: hsqldb:hsql://localhost/general
+    username: general-user
+    password: 12345
+
+#This below property is for Profiles, this(yml file) decides which profile to load
+  profiles:
+    active:
+      - dev
+
+# When we want to disable the spring security, we can add below entries in yml
+  #autoconfigure:
+   # exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+    #exclude[1]: org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+
+eureka:
+  instance:
+    hostname: localhost
+
+#This below property will give in-details of Actuator
+management:
+  endpoint:
+    health:
+      show-details: always
+    info:
+      enabled: true
+
+#This below property will give manage name to /actuator, so now the URL will be accessible with 'http://localhost:9001/manage/health'
+# but if we add spring security then this Actuator wont work on custom path, it needs default /actuator
+  endpoints:   
+    web:
+      #base-path: /manage
+      exposure:
+#In yml we cant give management.endpoints.web.exposure.include=*
+        include: 'health,info,metrics, beans,userAppInfo, controllerEndPoint'
+
+user:
+  fb:
+    name: ReadPropertyValue
+
+#Syntax for map in the yml file
+values:
+    map: '{key1: ''1'', key2 : ''2'', key3: ''3''}'
+
+
+#Syntax for list objects in the yml file
+list: '{"a", "b", "c", "d", "e", "f"}'
+
+#syntax for having @ConfigurationProperties in yml file
+config:
+  host: 172.168.42.13
+  port: 89
+  userName: dummy
+  thirdparty:
+    host: 109.4332.15
+    port: 90
+    name: User2
+
+#Logging related properties, bydefault spring is at info level
+logging:
+  level:
+    root: info
+  file: userApp.log 

@@ -1,0 +1,25 @@
+ # servlet:
+  #  context-path: /springDataDemo
+
+app:
+  server:
+    name: tomcat
+    detail: this is tomcat for dev
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/green?useSSL=false
+    username: root
+    password: root
+    driver-class-name : com.mysql.cj.jdbc.Driver
+      
+  jpa:
+    database-platform : org.hibernate.dialect.MySQL5Dialect
+    show-sql : true
+    generate-ddl : true
+    hibernate:
+      ddl-auto : update
+
+
+
+        

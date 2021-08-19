@@ -1,0 +1,29 @@
+server.port= 9001
+
+spring.application.name= user-service
+spring.datasource.url= hsqldb:hsql://localhost/general
+spring.datasource.username = general-user
+spring.datasource.password= 12345
+
+# When we want to disable the spring security, we can add below entries in yml
+  #autoconfigure:
+   # exclude[0]: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+    #exclude[1]: org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+
+eureka.instance.hostname = localhost
+
+user.fb.name =  ReadPropertyValue
+
+values.map =  {key1: '1', key2 : '2', key3: '3'}
+
+list= {"a", "b", "c", "d", "e", "f"}
+
+config.host=172.168.42.13
+config.port=89
+config.userName=dummy
+config.thirdparty.host=109.4332.15
+config.thirdparty.port=90
+config.thirdparty.name=User2
+
+app.server.name= general 
+app.server.detail= this is general server
